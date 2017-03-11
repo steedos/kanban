@@ -1,4 +1,4 @@
-CardComments = new Mongo.Collection('card_comments');
+CardComments = new Mongo.Collection('wekan_card_comments');
 
 CardComments.attachSchema(new SimpleSchema({
   boardId: {

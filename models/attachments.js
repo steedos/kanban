@@ -1,9 +1,9 @@
-Attachments = new FS.Collection('attachments', {
+Attachments = new FS.Collection('wekan_attachments', {
   stores: [
 
     // XXX Add a new store for cover thumbnails so we don't load big images in
     // the general board view
-    new FS.Store.GridFS('attachments'),
+    new FS.Store.GridFS('wekan_attachments'),
   ],
 });
 

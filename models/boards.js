@@ -1,4 +1,4 @@
-Boards = new Mongo.Collection('boards');
+Boards = new Mongo.Collection('wekan_boards');
 
 Boards.attachSchema(new SimpleSchema({
   title: {

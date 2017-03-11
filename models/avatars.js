@@ -1,6 +1,6 @@
-Avatars = new FS.Collection('avatars', {
+Avatars = new FS.Collection('wekan_avatars', {
   stores: [
-    new FS.Store.GridFS('avatars'),
+    new FS.Store.GridFS('wekan_avatars'),
   ],
   filter: {
     maxSize: 72000,

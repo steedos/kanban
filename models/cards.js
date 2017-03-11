@@ -1,4 +1,4 @@
-Cards = new Mongo.Collection('cards');
+Cards = new Mongo.Collection('wekan_cards');
 
 // XXX To improve pub/sub performances a card document should include a
 // de-normalized number of comments so we don't have to publish the whole list

@@ -1,4 +1,4 @@
-Lists = new Mongo.Collection('lists');
+Lists = new Mongo.Collection('wekan_lists');
 
 Lists.attachSchema(new SimpleSchema({
   title: {

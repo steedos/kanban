@@ -1,4 +1,4 @@
-InvitationCodes = new Mongo.Collection('invitation_codes');
+InvitationCodes = new Mongo.Collection('wekan_invitation_codes');
 
 InvitationCodes.attachSchema(new SimpleSchema({
   code: {

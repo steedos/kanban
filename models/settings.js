@@ -1,4 +1,4 @@
-Settings = new Mongo.Collection('settings');
+Settings = new Mongo.Collection('wekan_settings');
 
 Settings.attachSchema(new SimpleSchema({
   disableRegistration: {

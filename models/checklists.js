@@ -1,4 +1,4 @@
-Checklists = new Mongo.Collection('checklists');
+Checklists = new Mongo.Collection('wekan_checklists');
 
 Checklists.attachSchema(new SimpleSchema({
   cardId: {
