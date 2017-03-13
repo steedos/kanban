@@ -1,0 +1,20 @@
+{
+        "apps": [{
+                "name": "wekan.0",
+                "max_memory_restart": "1024M",
+                "log_date_format": "YYYY-MM-DD HH:mm:ss SSS",
+                "script": "/srv/wekan/bundle/main.js",
+                "out_file": "/srv/wekan/log/app.log",
+                "error_file": "/srv/wekan/log/err.log",
+                "port": "7100",
+                "env": {
+                        "MAIL_URL": "smtp://AKIAJPRG5K6Z2XDWUM2A:AglrBWID%2Fp2kCIByvcGE6gSbewe93HNFZXvGZs8lbk9I@email-smtp.us-east-1.amazonaws.com:25/",
+                        "MONGO_URL": "mongodb://192.168.0.21:27017/steedos",
+                        "MONGO_OPLOG_URL": "mongodb://192.168.0.21:27017/local",
+                        "ROOT_URL": "http://192.168.0.21/board",
+                        "MULTIPLE_INSTANCES_COLLECTION_NAME": "workflow_instances",  
+                        "X_DDP_DEFAULT_CONNECTION_URL": "http://192.168.0.21/",
+                        "PORT": "7100"
+                }
+        }]
+}
