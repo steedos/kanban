@@ -1,0 +1,24 @@
+{
+  "public": {
+    "cfs": {
+      "store": "OSS"
+    }
+  },
+  "cfs": {
+    "aliyun": {
+      "region": "xxxxxx",
+      "aliyunInternal": false,
+      "bucket": "xxxxxx",
+      "folder": "xxxxxx",
+      "accessKeyId": "xxxxxx",
+      "secretAccessKey": "xxxxxx"
+    },
+    "aws": {
+      "region": "xxxxxx",
+      "bucket": "xxxxxx",
+      "folder": "xxxxxx",
+      "accessKeyId": "xxxxxx",
+      "secretAccessKey": "xxxxxx"
+    }
+  }
+}
