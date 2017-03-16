@@ -1,7 +1,7 @@
 // Sandstorm context is detected using the METEOR_SETTINGS environment variable
 // in the package definition.
 const isSandstorm = Meteor.settings && Meteor.settings.public &&
-                    Meteor.settings.public.sandstorm;
+  Meteor.settings.public.sandstorm;
 Users = Meteor.users;
 
 Users.attachSchema(new SimpleSchema({
@@ -104,7 +104,7 @@ Users.attachSchema(new SimpleSchema({
 
 // Search a user in the complete server database by its name or username. This
 // is used for instance to add a new user to a board.
-const searchInFields = ['username', 'profile.fullname'];
+const searchInFields = ['username', 'profile.fullname', 'emails.address'];
 Users.initEasySearch(searchInFields, {
   use: 'mongo-db',
   returnFields: [...searchInFields, 'profile.avatarUrl'],
@@ -126,36 +126,60 @@ if (Meteor.isClient) {
 
 Users.helpers({
   boards() {
-    return Boards.find({ userId: this._id });
+    return Boards.find({
+      userId: this._id
+    });
   },
 
   starredBoards() {
-    const {starredBoards = []} = this.profile;
-    return Boards.find({archived: false, _id: {$in: starredBoards}});
+    const {
+      starredBoards = []
+    } = this.profile;
+    return Boards.find({
+      archived: false,
+      _id: {
+        $in: starredBoards
+      }
+    });
   },
 
   hasStarred(boardId) {
-    const {starredBoards = []} = this.profile;
+    const {
+      starredBoards = []
+    } = this.profile;
     return _.contains(starredBoards, boardId);
   },
 
   invitedBoards() {
-    const {invitedBoards = []} = this.profile;
-    return Boards.find({archived: false, _id: {$in: invitedBoards}});
+    const {
+      invitedBoards = []
+    } = this.profile;
+    return Boards.find({
+      archived: false,
+      _id: {
+        $in: invitedBoards
+      }
+    });
   },
 
   isInvitedTo(boardId) {
-    const {invitedBoards = []} = this.profile;
+    const {
+      invitedBoards = []
+    } = this.profile;
     return _.contains(invitedBoards, boardId);
   },
 
   hasTag(tag) {
-    const {tags = []} = this.profile;
+    const {
+      tags = []
+    } = this.profile;
     return _.contains(tags, tag);
   },
 
   hasNotification(activityId) {
-    const {notifications = []} = this.profile;
+    const {
+      notifications = []
+    } = this.profile;
     return _.contains(notifications, activityId);
   },
 
@@ -165,7 +189,9 @@ Users.helpers({
   },
 
   getEmailBuffer() {
-    const {emailBuffer = []} = this.profile;
+    const {
+      emailBuffer = []
+    } = this.profile;
     return emailBuffer;
   },
 
@@ -290,22 +316,36 @@ Users.mutations({
   },
 
   setAvatarUrl(avatarUrl) {
-    return { $set: { 'profile.avatarUrl': avatarUrl }};
+    return {
+      $set: {
+        'profile.avatarUrl': avatarUrl
+      }
+    };
   },
 
   setShowCardsCountAt(limit) {
-    return { $set: { 'profile.showCardsCountAt': limit } };
+    return {
+      $set: {
+        'profile.showCardsCountAt': limit
+      }
+    };
   },
 });
 
 Meteor.methods({
   setUsername(username) {
     check(username, String);
-    const nUsersWithUsername = Users.find({ username }).count();
+    const nUsersWithUsername = Users.find({
+      username
+    }).count();
     if (nUsersWithUsername > 0) {
       throw new Meteor.Error('username-already-taken');
     } else {
-      Users.update(this.userId, {$set: { username }});
+      Users.update(this.userId, {
+        $set: {
+          username
+        }
+      });
     }
   },
   toggleSystemMessages() {
@@ -328,21 +368,33 @@ if (Meteor.isServer) {
       const inviter = Meteor.user();
       const board = Boards.findOne(boardId);
       const allowInvite = inviter &&
-          board &&
-          board.members &&
-          _.contains(_.pluck(board.members, 'userId'), inviter._id) &&
-          _.where(board.members, {userId: inviter._id})[0].isActive &&
-          _.where(board.members, {userId: inviter._id})[0].isAdmin;
+        board &&
+        board.members &&
+        _.contains(_.pluck(board.members, 'userId'), inviter._id) &&
+        _.where(board.members, {
+          userId: inviter._id
+        })[0].isActive &&
+        _.where(board.members, {
+          userId: inviter._id
+        })[0].isAdmin;
       if (!allowInvite) throw new Meteor.Error('error-board-notAMember');
 
       this.unblock();
 
       const posAt = username.indexOf('@');
       let user = null;
-      if (posAt>=0) {
-        user = Users.findOne({emails: {$elemMatch: {address: username}}});
+      if (posAt >= 0) {
+        user = Users.findOne({
+          emails: {
+            $elemMatch: {
+              address: username
+            }
+          }
+        });
       } else {
-        user = Users.findOne(username) || Users.findOne({ username });
+        user = Users.findOne(username) || Users.findOne({
+          username
+        });
       }
       if (user) {
         if (user._id === inviter._id) throw new Meteor.Error('error-user-notAllowSelf');
@@ -352,7 +404,10 @@ if (Meteor.isServer) {
         // Set in lowercase email before creating account
         const email = username.toLowerCase();
         username = email.substring(0, posAt);
-        const newUserId = Accounts.createUser({ username, email });
+        const newUserId = Accounts.createUser({
+          username,
+          email
+        });
         if (!newUserId) throw new Meteor.Error('error-user-notCreated');
         // assume new user speak same language with inviter
         if (inviter.profile && inviter.profile.language) {
@@ -387,12 +442,15 @@ if (Meteor.isServer) {
         throw new Meteor.Error('email-fail', e.message);
       }
 
-      return { username: user.username, email: user.emails[0].address };
+      return {
+        username: user.username,
+        email: user.emails[0].address
+      };
     },
   });
   Accounts.onCreateUser((options, user) => {
     const userCount = Users.find().count();
-    if (userCount === 0){
+    if (userCount === 0) {
       user.isAdmin = true;
       return user;
     }
@@ -403,11 +461,16 @@ if (Meteor.isServer) {
 
     const iCode = options.profile.invitationcode | '';
 
-    const invitationCode = InvitationCodes.findOne({code: iCode, valid:true});
+    const invitationCode = InvitationCodes.findOne({
+      code: iCode,
+      valid: true
+    });
     if (!invitationCode) {
       throw new Meteor.Error('error-invitation-code-not-exist');
-    }else{
-      user.profile = {icode: options.profile.invitationcode};
+    } else {
+      user.profile = {
+        icode: options.profile.invitationcode
+      };
     }
 
     return user;
@@ -419,7 +482,9 @@ if (Meteor.isServer) {
   Meteor.startup(() => {
     Users._collection._ensureIndex({
       username: 1,
-    }, { unique: true });
+    }, {
+      unique: true
+    });
   });
 
   // Each board document contains the de-normalized number of users that have
@@ -446,7 +511,11 @@ if (Meteor.isServer) {
     // direction and then in the other.
     function incrementBoards(boardsIds, inc) {
       boardsIds.forEach((boardId) => {
-        Boards.update(boardId, {$inc: {stars: inc}});
+        Boards.update(boardId, {
+          $inc: {
+            stars: inc
+          }
+        });
       });
     }
     incrementBoards(_.difference(oldIds, newIds), -1);
@@ -475,7 +544,10 @@ if (Meteor.isServer) {
         }, fakeUser, (err, boardId) => {
 
           ['welcome-list1', 'welcome-list2'].forEach((title) => {
-            Lists.insert({ title: TAPi18n.__(title), boardId }, fakeUser);
+            Lists.insert({
+              title: TAPi18n.__(title),
+              boardId
+            }, fakeUser);
           });
         });
       });
@@ -488,18 +560,26 @@ if (Meteor.isServer) {
     const disableRegistration = Settings.findOne().disableRegistration;
     if (disableRegistration) {
       const user = Users.findOne(doc._id);
-      const invitationCode = InvitationCodes.findOne({code: user.profile.icode, valid:true});
+      const invitationCode = InvitationCodes.findOne({
+        code: user.profile.icode,
+        valid: true
+      });
       if (!invitationCode) {
         throw new Meteor.Error('error-user-notCreated');
-      }else{
+      } else {
         invitationCode.boardsToBeInvited.forEach((boardId) => {
           const board = Boards.findOne(boardId);
           board.addMember(doc._id);
         });
-        user.profile = {invitedBoards: invitationCode.boardsToBeInvited};
-        InvitationCodes.update(invitationCode._id, {$set: {valid:false}});
+        user.profile = {
+          invitedBoards: invitationCode.boardsToBeInvited
+        };
+        InvitationCodes.update(invitationCode._id, {
+          $set: {
+            valid: false
+          }
+        });
       }
     }
   });
 }
-
