@@ -1,17 +1,86 @@
-.at-form-landing-logo{
-  img {
-    display: none;
-  }
-}
 
-.at-form-lang {
-  display: none;
-}
+@media (min-width: 100px) {
 
-.js-change-language{
-  display: none !important;
-}
-  
-#header #header-main-bar .wekan-logo {
-	display: none !important;
+	.at-form-landing-logo{
+	  img {
+	    display: none;
+	  }
+	}
+
+	.at-form-lang {
+	  display: none;
+	}
+
+	.js-change-language{
+		display: none !important;
+	}
+	.js-change-board-color {
+		display: none !important;
+	}
+
+	#header-quick-access {
+		background: rgba(0, 0, 0, 0.3) !important;
+	}
+
+	#header {
+		background: transparent !important;
+		#header-main-bar {
+			height: 30px;
+	    	padding: 8px 4px 8px 8px;
+	    	.header-board-menu {
+				font-size: 18px;
+	    		font-weight: 700;
+	    	}
+	    	.board-header-btns.left {
+	    		margin-top: 0px;
+	    	}
+			.wekan-logo {
+				display: none !important;
+			}
+		}
+	}
+
+	body {
+		background-color: rgb(0, 121, 191) !important;
+	}
+
+	html, body, input, select, textarea, button {
+	    font: 14px "Helvetica Neue",Arial,Helvetica,sans-serif !important;
+	}   
+
+	.board-wrapper {
+		.list:first-child {
+		    margin-left: 10px;
+		}
+		.list {
+			margin: 0 5px;		
+	    	border-radius: 3px;
+	    	.list-header{
+	    	    padding: 8px 10px;
+	    	    margin: 0px;
+	    	    min-height: 18px;
+		    	.list-header-menu-icon {
+				    position: absolute;
+				    padding: 7px;
+				    margin-top: 0px;
+				    top: 0px;
+				    right: 2px;
+				}
+			}	
+			.list-body {
+				padding: 0 4px;
+	    		margin: 0 4px;
+	    		.open-minicard-composer {
+	    			margin-left: -8px;
+	    		}
+	    		.open-minicard-composer:hover {
+	    		    box-shadow: none;
+   					background: rgba(0, 0, 0, 0.1);
+	    		}
+			}
+		}
+		.list:last-child {
+		    margin-right: 10px;
+		}
+	}
 }
