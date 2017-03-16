@@ -1,5 +1,5 @@
 Package.describe({
-	name: 'steedos',
+	name: 'steedos:wekan',
 	summary: '',
 	version: '1.0.0',
 	git: 'https://github.com/kadirahq/flow-router.git'
