@@ -1,5 +1,7 @@
 let previousPath;
-FlowRouter.triggers.exit([({path}) => {
+FlowRouter.triggers.exit([({
+  path
+}) => {
   previousPath = path;
 }]);
 
@@ -61,6 +63,7 @@ FlowRouter.route('/b/:boardId/:slug/:cardId', {
 FlowRouter.route('/shortcuts', {
   name: 'shortcuts',
   action() {
+    if (previousPath == this.path) return;
     const shortcutsTemplate = 'keyboardShortcuts';
 
     EscapeActions.executeUpTo('popup-close');
@@ -121,7 +124,9 @@ FlowRouter.route('/setting', {
 
 FlowRouter.notFound = {
   action() {
-    BlazeLayout.render('defaultLayout', { content: 'notFound' });
+    BlazeLayout.render('defaultLayout', {
+      content: 'notFound'
+    });
   },
 };
 
