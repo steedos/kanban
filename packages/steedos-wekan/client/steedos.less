@@ -1,6 +1,14 @@
 
 @media (min-width: 100px) {
 
+	body {
+		background-color: rgb(0, 121, 191) !important;
+	}
+
+	html, body, input, select, textarea, button {
+		font-family: "-apple-system, BlinkMacSystemFont, Helvetica, Arial, Microsoft Yahei, SimHei" !important;
+	}   
+
 	.at-form-landing-logo{
 	  img {
 		display: none;
@@ -32,7 +40,7 @@
 	}
 
 	#header {
-		background: transparent !important;
+		background: rgba(0, 0, 0, 0.3) !important;
 		#header-main-bar {
 			height: 30px;
 			padding: 8px 4px 8px 8px;
@@ -49,14 +57,6 @@
 		}
 	}
 
-	body {
-		background-color: rgb(0, 121, 191) !important;
-	}
-
-	html, body, input, select, textarea, button {
-		font-family: "-apple-system, BlinkMacSystemFont, Helvetica, Arial, Microsoft Yahei, SimHei" !important;
-	}   
-
 	.board-list {
 		background: rgba(255, 255, 255, 0.8);
 		border-radius: 5px;
@@ -64,6 +64,9 @@
 	}
 
 	.board-wrapper {
+		.board-canvas {
+			margin-top: 10px;
+		}
 		.list:first-child {
 			margin-left: 10px;
 		}
@@ -78,8 +81,8 @@
 					position: absolute;
 					padding: 7px;
 					margin-top: 0px;
-					top: 0px;
-					right: 2px;
+					top: 2px;
+					right: 4px;
 				}
 			}	
 			.list-body {
