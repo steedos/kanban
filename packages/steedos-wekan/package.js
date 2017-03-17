@@ -15,6 +15,7 @@ Package.onUse(function(api) {
 	api.use('idmontie:migrations@1.0.1');
 
 	api.addFiles('client/steedos.less', 'client');
+    api.addAssets("client/background/flower.jpg", "client");
 
 	api.addFiles('server/migrations.coffee', 'server');
 	api.addFiles('server/lib/observeUsers.coffee', 'server');
