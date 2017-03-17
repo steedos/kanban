@@ -3,7 +3,7 @@
 
 	.at-form-landing-logo{
 	  img {
-	    display: none;
+		display: none;
 	  }
 	}
 
@@ -19,21 +19,30 @@
 	}
 
 	#header-quick-access {
-		background: rgba(0, 0, 0, 0.3) !important;
+		box-shadow: rgba(0, 0, 0, 0.3) 0 1px 9px, rgba(255, 255, 255, 0.2) 0 -1px 0 inset;
+		-webkit-transition: all 1s ease-in-out 0.5s;
+		transition: all 1s ease-in-out 0.5s;
+		border-bottom: 1px solid #000;
+		border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+		background: #000;
+		background: rgba(0, 0, 0, 0.8) !important;
+		height: 40px !important;
+		padding-top: 10px;
+		font-size: 16px !important;
 	}
 
 	#header {
 		background: transparent !important;
 		#header-main-bar {
 			height: 30px;
-	    	padding: 8px 4px 8px 8px;
-	    	.header-board-menu {
+			padding: 8px 4px 8px 8px;
+			.header-board-menu {
 				font-size: 18px;
-	    		font-weight: 700;
-	    	}
-	    	.board-header-btns.left {
-	    		margin-top: 0px;
-	    	}
+				font-weight: 700;
+			}
+			.board-header-btns.left {
+				margin-top: 0px;
+			}
 			.wekan-logo {
 				display: none !important;
 			}
@@ -45,42 +54,48 @@
 	}
 
 	html, body, input, select, textarea, button {
-	    font-family: "-apple-system, BlinkMacSystemFont, Helvetica, Arial, Microsoft Yahei, SimHei" !important;
+		font-family: "-apple-system, BlinkMacSystemFont, Helvetica, Arial, Microsoft Yahei, SimHei" !important;
 	}   
+
+	.board-list {
+		background: rgba(255, 255, 255, 0.8);
+		border-radius: 5px;
+		padding: 10px;
+	}
 
 	.board-wrapper {
 		.list:first-child {
-		    margin-left: 10px;
+			margin-left: 10px;
 		}
 		.list {
 			margin: 0 5px;		
-	    	border-radius: 3px;
-	    	.list-header{
-	    	    padding: 8px 10px;
-	    	    margin: 0px;
-	    	    min-height: 18px;
-		    	.list-header-menu-icon {
-				    position: absolute;
-				    padding: 7px;
-				    margin-top: 0px;
-				    top: 0px;
-				    right: 2px;
+			border-radius: 3px;
+			.list-header{
+				padding: 8px 10px;
+				margin: 0px;
+				min-height: 18px;
+				.list-header-menu-icon {
+					position: absolute;
+					padding: 7px;
+					margin-top: 0px;
+					top: 0px;
+					right: 2px;
 				}
 			}	
 			.list-body {
 				padding: 0 4px;
-	    		margin: 0 4px;
-	    		.open-minicard-composer {
-	    			margin-left: -8px;
-	    		}
-	    		.open-minicard-composer:hover {
-	    		    box-shadow: none;
-   					background: rgba(0, 0, 0, 0.1);
-	    		}
+				margin: 0 4px;
+				.open-minicard-composer {
+					margin-left: -8px;
+				}
+				.open-minicard-composer:hover {
+					box-shadow: none;
+					background: rgba(0, 0, 0, 0.1);
+				}
 			}
 		}
 		.list:last-child {
-		    margin-right: 10px;
+			margin-right: 10px;
 		}
 
 		.card-details {
