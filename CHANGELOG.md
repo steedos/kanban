@@ -1,6 +1,61 @@
+# v0.17 2017-03-25 Wekan release
+
+Known bugs:
+
+* https://github.com/wekan/wekan/issues/784
+
+This release fixes the following bugs:
+
+* Double slash problem on card pop-ups;
+* No need for Array.prototype if using rest operator;
+* Fix default font so Chinese is shown correctly.
+  Still looking for better solution for #914 although
+  commit had wrong number #707.
+
+Thanks to GitHub users mo-han, Serubin and vuxor for
+their contributions.
+
+# v0.16 2017-03-15 Wekan release
+
+Added missing changelog updates.
+
+# v0.15 2017-03-15 Wekan release
+
+Updated translations.
+
+# v0.14 2017-03-15 Wekan release
+
+Known bugs:
+
+* https://github.com/wekan/wekan/issues/785
+* https://github.com/wekan/wekan/issues/784
+
+This release fixes the following bug:
+
+* Set IE compatibility mode to Edge to so that
+  Wekan board loads correctly.
+
+Thanks to GitHub users immertroll and REJack for
+their contributions.
+
+# v0.13 2017-03-12 Wekan release
+
+Known bugs:
+
+* https://github.com/wekan/wekan/issues/785
+* https://github.com/wekan/wekan/issues/784
+
+This release fixes the following bug:
+
+* Admin Panel: Set mail-from to environment immediately after changed,
+  allow user set a blank username and password pair in SMTP setting.
+
+Thanks to GitHub user lkisme for contributions.
+
 # v0.12 2017-03-05 Wekan release
 
 Known bugs:
+
 * https://github.com/wekan/wekan/issues/785
 * https://github.com/wekan/wekan/issues/784
 
