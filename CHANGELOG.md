@@ -1,6 +1,44 @@
+# v0.16 2017-03-15 Wekan release
+
+Added missing changelog updates.
+
+# v0.15 2017-03-15 Wekan release
+
+Updated translations.
+
+# v0.14 2017-03-15 Wekan release
+
+Known bugs:
+
+* https://github.com/wekan/wekan/issues/785
+* https://github.com/wekan/wekan/issues/784
+
+This release fixes the following bug:
+
+* Set IE compatibility mode to Edge to so that
+  Wekan board loads correctly.
+
+Thanks to GitHub users immertroll and REJack for
+their contributions.
+
+# v0.13 2017-03-12 Wekan release
+
+Known bugs:
+
+* https://github.com/wekan/wekan/issues/785
+* https://github.com/wekan/wekan/issues/784
+
+This release fixes the following bug:
+
+* Admin Panel: Set mail-from to environment immediately after changed,
+  allow user set a blank username and password pair in SMTP setting.
+
+Thanks to GitHub user lkisme for contributions.
+
 # v0.12 2017-03-05 Wekan release
 
 Known bugs:
+
 * https://github.com/wekan/wekan/issues/785
 * https://github.com/wekan/wekan/issues/784
 
