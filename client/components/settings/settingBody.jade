@@ -1,21 +1,28 @@
 template(name="setting")
   .setting-content
-    .content-title
-      span {{_ 'settings'}}
-    .content-body
-      .side-menu
-        ul
-          li.active
-            a.js-setting-menu(data-id="registration-setting") {{_ 'registration'}}
-          li
-            a.js-setting-menu(data-id="email-setting") {{_ 'email'}}
-      .main-body
-        if loading.get
-          +spinner
-        else if generalSetting.get
-          +general
-        else if emailSetting.get
-          +email
+    unless currentUser.isAdmin
+      | {{_ 'error-notAuthorized'}}
+    else
+      .content-title
+        span {{_ 'settings'}}
+      .content-body
+        .side-menu
+          ul
+            li.active
+              a.js-setting-menu(data-id="registration-setting") {{_ 'registration'}}
+            li
+              a.js-setting-menu(data-id="email-setting") {{_ 'email'}}
+            li
+              a.js-setting-menu(data-id="account-setting") {{_ 'accounts'}}
+        .main-body
+          if loading.get
+            +spinner
+          else if generalSetting.get
+            +general
+          else if emailSetting.get
+            +email
+          else if accountSetting.get
+            +accountSettings
 
 template(name="general")
   ul#registration-setting.setting-detail
@@ -76,4 +83,16 @@ template(name='email')
         input.form-control#mail-server-from(type="email", placeholder="no-reply@domain.com" value="{{currentSetting.mailServer.from}}")
 
     li
-      button.js-save.primary Save
+      button.js-save.primary {{_ 'save'}}
+
+template(name='accountSettings')
+  ul#account-setting.setting-detail
+    li.smtp-form
+      .title {{_ 'accounts-allowEmailChange'}}
+      .form-group.flex
+        input.form-control#accounts-allowEmailChange(type="radio" name="allowEmailChange" value="true" checked="{{#if allowEmailChange}}checked{{/if}}")
+        span {{_ 'yes'}}
+        input.form-control#accounts-allowEmailChange(type="radio" name="allowEmailChange" value="false" checked="{{#unless allowEmailChange}}checked{{/unless}}")
+        span {{_ 'no'}}
+    li
+      button.js-accounts-save.primary {{_ 'save'}}

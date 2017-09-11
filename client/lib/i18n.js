@@ -17,13 +17,20 @@ $.ajax({
 });
 
 Meteor.startup(() => {
+  TAPi18n.conf.i18n_files_route = Meteor._relativeToSiteRootUrl('/tap-i18n');
   Tracker.autorun(() => {
     const currentUser = Meteor.user();
     let language;
-    if (currentUser && currentUser.profile && currentUser.profile.language) {
-      language = currentUser.profile.language;
-    } else {
-      language = navigator.language || navigator.userLanguage;
+    if (currentUser) {
+      language = currentUser.profile && currentUser.profile.language;
+    }
+
+    if (!language) {
+      if(navigator.languages) {
+        language = navigator.languages[0];
+      } else {
+        language = navigator.language || navigator.userLanguage;
+      }
     }
 
     if (language) {

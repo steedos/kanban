@@ -13,13 +13,19 @@ Template.boardMenuPopup.events({
     // confirm that the board was successfully archived.
     FlowRouter.go('home');
   }),
+  'click .js-outgoing-webhooks': Popup.open('outgoingWebhooks'),
+  'click .js-import-board': Popup.open('chooseBoardSource'),
 });
 
 Template.boardMenuPopup.helpers({
   exportUrl() {
-    const boardId = Session.get('currentBoard');
-    const loginToken = Accounts._storedLoginToken();
-    return FlowRouter.url(`api/boards/${boardId}?authToken=${loginToken}`);
+    const params = {
+      boardId: Session.get('currentBoard'),
+    };
+    const queryParams = {
+      authToken: Accounts._storedLoginToken(),
+    };
+    return FlowRouter.path('/api/boards/:boardId/export', params, queryParams);
   },
   exportFilename() {
     const boardId = Session.get('currentBoard');
@@ -71,6 +77,9 @@ BlazeComponent.extendComponent({
       'click .js-open-board-menu': Popup.open('boardMenu'),
       'click .js-change-visibility': Popup.open('boardChangeVisibility'),
       'click .js-watch-board': Popup.open('boardChangeWatch'),
+      'click .js-open-archived-board'() {
+        Modal.open('archivedBoards');
+      },
       'click .js-open-filter-view'() {
         Sidebar.setView('filter');
       },
@@ -170,9 +179,16 @@ const CreateBoard = BlazeComponent.extendComponent({
       'click .js-change-visibility': this.toggleVisibilityMenu,
       'click .js-import': Popup.open('boardImportBoard'),
       submit: this.onSubmit,
+      'click .js-import-board': Popup.open('chooseBoardSource'),
     }];
   },
 }).register('createBoardPopup');
+
+BlazeComponent.extendComponent({
+  template() {
+    return 'chooseBoardSource';
+  },
+}).register('chooseBoardSourcePopup');
 
 (class HeaderBarCreateBoard extends CreateBoard {
   onSubmit(evt) {
@@ -223,3 +239,50 @@ BlazeComponent.extendComponent({
     }];
   },
 }).register('boardChangeWatchPopup');
+
+BlazeComponent.extendComponent({
+  integrations() {
+    const boardId = Session.get('currentBoard');
+    return Integrations.find({ boardId: `${boardId}` }).fetch();
+  },
+
+  integration(id) {
+    const boardId = Session.get('currentBoard');
+    return Integrations.findOne({ _id: id, boardId: `${boardId}` });
+  },
+
+  events() {
+    return [{
+      'submit'(evt) {
+        evt.preventDefault();
+        const url = evt.target.url.value;
+        const boardId = Session.get('currentBoard');
+        let id = null;
+        let integration = null;
+        if (evt.target.id) {
+          id = evt.target.id.value;
+          integration = this.integration(id);
+          if (url) {
+            Integrations.update(integration._id, {
+              $set: {
+                url: `${url}`,
+              },
+            });
+          } else {
+            Integrations.remove(integration._id);
+          }
+        } else if (url) {
+          Integrations.insert({
+            userId: Meteor.userId(),
+            enabled: true,
+            type: 'outgoing-webhooks',
+            url: `${url}`,
+            boardId: `${boardId}`,
+            activities: ['all'],
+          });
+        }
+        Popup.close();
+      },
+    }];
+  },
+}).register('outgoingWebhooksPopup');

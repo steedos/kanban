@@ -1,3 +1,334 @@
+<<<<<<< HEAD
+=======
+# v0.37 2017-09-09 Wekan release
+
+This release adds the following new features:
+
+* [Copy card within one board](https://github.com/wekan/wekan/pull/1204).
+
+Thanks to GitHub user frmwrk123 for contributions.
+
+# v0.36 2017-09-02 Wekan release
+
+This release adds the following new features:
+
+* [Import attachments related activities from Wekan and
+   Trello](https://github.com/wekan/wekan/pull/1202).
+
+Thanks to GitHub user GhassenRjab for contributions.
+
+# v0.35 2017-09-02 Wekan release
+
+This release adds the following new features:
+
+* [Add more than one Outgoing Webhook](https://github.com/wekan/wekan/pull/1199).
+
+and fixes the following bugs:
+
+* [Fix errors caused by checklist items activities](https://github.com/wekan/wekan/pull/1200).
+
+Thanks to GitHub users andresmanelli, GhassenRjab and nztqa for contributions.
+
+# v0.34 2017-08-30 Wekan release
+
+This release adds the following new features:
+
+* [Import Trello and Wekan board times of creation of activities](https://github.com/wekan/wekan/pull/1187);
+* Newest Wekan is available at Sandstorm App Market.
+
+Known issues:
+
+* [Attachment creation times are not imported to Trello and Wekan](https://github.com/wekan/wekan/issues/1157).
+  - This is fixed in v0.36.
+
+Thanks to GitHub user GhassenRjab for contributions.
+
+# v0.33 2017-08-29 Wekan release
+
+This release adds the following new features:
+
+* [Add Bounties and Commercial Support to wiki](https://github.com/wekan/wekan/wiki);
+* [Add display Wekan version number and runtime
+   environment to Admin Panel](https://github.com/wekan/wekan/pull/1156);
+* [Change Email address](https://github.com/wekan/wekan/pull/1161);
+* [Ubuntu snap: Use version scriptlet](https://github.com/wekan/wekan/pull/1164);
+* [Gogs integration part 1](https://github.com/wekan/wekan/pull/1189);
+* [Add web manifest so Wekan can be used like standalone app on Desktop
+   with Chrome or Firefox](https://github.com/wekan/wekan/pull/1184);
+* [Copy card link to clipboard](https://github.com/wekan/wekan/issues/1188);
+* [Usernames can now include dots (.)](https://github.com/wekan/wekan/pull/1194).
+
+and fixes the following bugs:
+
+* [Fix Squeezed tickbox in Card](https://github.com/wekan/wekan/pull/1171);
+* [Percent-encode SMTP password to prevent URI malformed
+   errors](https://github.com/wekan/wekan/pull/1190);
+* [Fix Wekan Import Export on Standalone and Sandstorm](https://github.com/wekan/wekan/pull/1197).
+
+Thanks to GitHub users andresmanelli, danhawkes, GhassenRjab, jonasob, kubiko, nztqa,
+pkuhner and xet7 for their contributions.
+
+# v0.32 2017-07-30 Wekan release
+
+This release adds the following new features:
+
+* [Add dwrensha's Sandstorm patch to Wekan so it does not need to be maintained
+   separately](https://github.com/wekan/wekan/commit/bda15daa78556223117a5846941aafd1212f14d3).
+
+and fixes the following bugs:
+
+* [FIX SECURITY ISSUE Files accessible without authentication](https://github.com/wekan/wekan/issues/1105);
+* [Fix showing card activity history in IE11](https://github.com/wekan/wekan/pull/1152).
+
+Thanks to GitHub users dwrensha, GhassenRjab and nztqa for their contributions.
+
+# v0.31 2017-07-30 Wekan release
+
+* This was broken, having lint errors.
+
+# v0.30 2017-07-27 Wekan release
+
+SECURITY ISSUE [Files accessible without authentication](https://github.com/wekan/wekan/issues/1105)
+IS NOT FIXED YET.
+
+This release adds the following new features:
+
+* [More screenshots at Features page](https://github.com/wekan/wekan/wiki/Features);
+* [Export and import boards in Sandstorm](https://github.com/wekan/wekan/pull/1144);
+* [GitHub Issue template](https://github.com/wekan/wekan/pull/1146);
+* [Add checklist items to activity log](https://github.com/wekan/wekan/pull/1148).
+
+and fixes the following bugs:
+
+* [Double shashes on ROOT_URL](https://github.com/wekan/wekan/issues/962).
+
+Thanks to GitHub users GhassenRjab, nztqa and xet7 for their contributions.
+
+# v0.29 2017-07-21 Wekan release
+
+SECURITY ISSUE [Files accessible without authentication](https://github.com/wekan/wekan/issues/1105)
+IS NOT FIXED YET.
+
+This release adds the following new features:
+
+* [Export and import attachments as base64 encoded files](https://github.com/wekan/wekan/pull/1134);
+* [Export and import checklists](https://github.com/wekan/wekan/pull/1140).
+
+and fixes the following bugs:
+
+* [Activity user messed up when creating a card using the REST-API](https://github.com/wekan/wekan/pull/1116).
+
+Thanks to GitHub users GhassenRjab and zarnifoulette for their contributions.
+
+# v0.28 2017-07-15 Wekan release
+
+SECURITY ISSUE [Files accessible without authentication](https://github.com/wekan/wekan/issues/1105)
+IS NOT FIXED YET.
+
+This release adds the following new features:
+
+* [REST API: Add PUT method to update a card](https://github.com/wekan/wekan/pull/1095) and
+  [related fix](https://github.com/wekan/wekan/pull/1097);
+* [When finished input of checklist item, open new checklist
+  item](https://github.com/wekan/wekan/pull/1099);
+* [Improve UI design of checklist items](https://github.com/wekan/wekan/pull/1108);
+* [Import Wekan board](https://github.com/wekan/wekan/pull/1117);
+* [Outgoing Webhooks](https://github.com/wekan/wekan/pull/1119);
+* [Wekan wiki now has menu with categories](https://github.com/wekan/wekan/wiki).
+
+and fixes the following bugs:
+
+* [SECURITY: Upgrade Node.js, MongoDB and Debian on Docker and Ubuntu snap edge](https://github.com/wekan/wekan/pull/1132);
+* [Possible to add empty item to checklist](https://github.com/wekan/wekan/pull/1107);
+* [Double-slash issue](https://github.com/wekan/wekan/pull/1114);
+* [Node.js crash when adding new user to board](https://github.com/wekan/wekan/issues/1131).
+
+Thanks to GitHub users GhassenRjab, johnleeming, jtickle, nztqa, xet7 and zarnifoulette
+for their contributions.
+
+# v0.27 2017-06-28 Wekan release
+
+This release adds the following new features:
+
+* [Snapcraft build support from source](https://github.com/wekan/wekan/pull/1091).
+
+and fixes the following bugs:
+
+* [Fix incorrect attachment link with subfolder in the url](https://github.com/wekan/wekan/pull/1086);
+* [Fix link to card](https://github.com/wekan/wekan/pull/1087);
+* [Fix duplicate id generation](https://github.com/wekan/wekan/pull/1093).
+
+Thanks to GitHub users kubiko and nztqa for their contributions.
+
+# v0.26 2017-06-26 Wekan release
+
+This release fixes the following bugs:
+
+* [Fix admin panel route for subfolder](https://github.com/wekan/wekan/pull/1084);
+* [Fix i18n route for subfolder](https://github.com/wekan/wekan/pull/1085).
+
+Thanks to GitHub user nztqa for contributions.
+
+# v0.25 2017-06-24 Wekan release
+
+This release adds the following new features:
+
+* [Import due date from Trello](https://github.com/wekan/wekan/pull/1082).
+
+and fixes the following bugs:
+
+* [Fix importing Trello board: Attribute correct members to their
+   comments](https://github.com/wekan/wekan/pull/1080);
+* [Fix Case-sensitive email handling](https://github.com/wekan/wekan/issues/675);
+* [Use fibers 1.0.15 because 2.0.0 is broken](https://github.com/wekan/wekan/commit/86e2744c24149c0eacf725b68a186d0bcfae5100);
+* [Remove git submodules, so that git clone of Wekan repo works now on Windows](https://github.com/wekan/wekan/issues/977).
+
+Thanks to GitHub users GhassenRjab, nztqa and xet7 for their contributions.
+
+# v0.24 2017-06-21 Wekan release
+
+This release adds the following new features:
+
+* [Change the way to delete a list (card-like)](https://github.com/wekan/wekan/pull/1050), fixes
+  [missing undo button](https://github.com/wekan/wekan/issues/1023);
+* [When deleting list, delete list's cards too](https://github.com/wekan/wekan/pull/1054);
+* [Re-enable Export Wekan Board](https://github.com/wekan/wekan/pull/1059);
+* [Sort languages by their translated names](https://github.com/wekan/wekan/pull/1070);
+* [Add Breton language name](https://github.com/wekan/wekan/pull/1071).
+
+and fixes the following bugs:
+
+* [Fix Admin Panel link available to all users, only link is hidden](https://github.com/wekan/wekan/pull/1076);
+* [Fix IE 11 drag board to scroll](https://github.com/wekan/wekan/pull/1052);
+* [Fix Export Wekan board](https://github.com/wekan/wekan/pull/1067);
+* [Fix "W" shortcut binding](https://github.com/wekan/wekan/pull/1066);
+* [Fix login url in invitation email](https://github.com/wekan/wekan/issues/993);
+* [Edit card description with invalid markdown](https://github.com/wekan/wekan/pull/1073);
+* [Fix filter reset on moving between starred boards](https://github.com/wekan/wekan/pull/1074).
+
+Thanks to GitHub users BaobabCoder, GhassenRjab, nebulade, nztqa and xet7
+for their contributions.
+
+# v0.23 2017-05-21 Wekan release
+
+This release adds the following new features:
+
+* [Add checklist and card comment to REST API](https://github.com/wekan/wekan/pull/1033);
+* [Add token authentication to REST API](https://github.com/wekan/wekan/pull/1033), this fixes
+  [Security flaws introduced by REST API](https://github.com/wekan/wekan/issues/1032);
+* [Authorization improvements etc to REST API](https://github.com/wekan/wekan/pull/1041);
+* [IE 11 support in unicode filename downloads](https://github.com/wekan/wekan/issues/1031).
+
+and fixes the following bugs:
+
+* [When Wekan starts, there's "here1 false" messages in
+  console](https://github.com/wekan/wekan/issues/1028);
+* [IE11 problem when closing cards, sidebar etc](https://github.com/wekan/wekan/pull/1042).
+
+Thanks to GitHub users huneau, mayjs and nztqa for their contributions.
+
+# v0.22 2017-05-07 Wekan release
+
+This release fixes the following bugs:
+
+* [Download file(unicode filename) cause crash with exception](https://github.com/wekan/wekan/issues/784)
+
+Thanks to GitHub user yatusiter for contributions.
+
+# v0.21 2017-05-07 Wekan release
+
+Known bugs:
+
+* https://github.com/wekan/wekan/issues/784
+
+This release fixes the following bugs:
+
+* Update release version number to package.json.
+
+Thanks to GitHub user xet7 for contributions.
+
+# v0.20 2017-05-07 Wekan release
+
+Known bugs:
+
+* https://github.com/wekan/wekan/issues/784
+
+This release fixes the following bugs:
+
+* Docker images missing latest Debian updates.
+
+Thanks to GitHub user xet7 for contributions.
+
+# v0.19 2017-05-06 Wekan release
+
+Known bugs:
+
+* https://github.com/wekan/wekan/issues/784
+
+This release adds the following new features:
+
+* Set first user as admin, it there is no existing
+  users and Wekan is not running at Sandstorm;
+* New Docker Compose [Wekan-MongoDB](https://github.com/wekan/wekan-mongodb)
+  and [Wekan-PostgreSQL](https://github.com/wekan/wekan-postgresql)
+  that use Meteor v1.4 and Node v4 based Wekan's meteor-1.4 branch;
+* [Console, file, and zulip logger on database changes](https://github.com/wekan/wekan/pull/1010);
+* [REST API first step](https://github.com/wekan/wekan/pull/1003);
+* [Install from source](https://github.com/wekan/wekan/wiki/Install-and-Update#install-manually-from-source)
+  has been updated to new meteor 1.4 version;
+* meteor-1.4 branch has been merged to devel and master branches,
+  where development continues from now on. Previous code has been moved to
+  meteor-1.3-2017-04-27 branch;
+* [VirtualBox image updated](https://wekan.xet7.org).
+
+and fixes the following bugs:
+
+* isCommentOnly false fix for Trello import;
+* Node version to 4.8.1 to solve 100% CPU issue;
+* Fix bson error on Docker and install from source;
+* Try other key servers on Dockerfile if ha.pool.sks-keyservers.net is unreachable.
+
+Thanks to GitHub users brylie, huneau, johnniesong, rhelsing, stephenmoloney,
+xet7 and Zokormazo for contributions.
+
+# v0.18 2017-04-02 Wekan release
+
+Known bugs:
+
+* https://github.com/wekan/wekan/issues/784
+
+This release adds the following new features:
+
+* Add TLS toggle option to smtp configuration;
+* [Comment permissions](https://github.com/wekan/wekan/issues/870);
+* Add bigger screenshots for Sandstorm.
+
+and fixes the following bugs:
+
+* Fix email settings loading:
+  MAIL_URL was overriden with database info all the time.
+  Now if MAIL_URL exists is not overwritten and if neither MAIL_URL nor
+  exists valid admin panel data MAIL_URL is not set.
+  MAIL_FROM was ignored. Same behaviour, env variable has bigger priority
+  than database configuration.
+  On both cases, althrought environment variable is set, updating admin-panel
+  mail settings will load new info and ignore the environment variable;
+* Dockerfile fix for local packages;
+* Don't send emails if missing smtp host;
+* Remove invitation code if email sending failed;
+* Show customized error msg while invitaion code is wrong during registration;
+* Fix "internal error" while registration is done;
+* Fix "cannot access disableRegistration of undefined" error;
+* Add high available server for getting the gpg keys - suppose it should lead
+  to fewer failures on getting the gpg keys leading to some rare build failures;
+* Add a docker build to the .travis.yml - this will help determine if pull
+  requests need further review before merging into devel;
+* Use navigator language by default instead of English.
+
+Thanks to GitHub users JamborJan, lkisme, rhelsing, Serubin, stephenmoloney,
+umbertooo and Zokormazo for their contributions.
+
+>>>>>>> refs/remotes/wekan/devel
 # v0.17 2017-03-25 Wekan release
 
 Known bugs:

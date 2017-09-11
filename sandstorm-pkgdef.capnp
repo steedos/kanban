@@ -22,10 +22,10 @@ const pkgdef :Spk.PackageDefinition = (
     appTitle = (defaultText = "Wekan"),
     # The name of the app as it is displayed to the user.
 
-    appVersion = 19,
+    appVersion = 24,
     # Increment this for every release.
 
-    appMarketingVersion = (defaultText = "0.16.0~2017-03-21"),
+    appMarketingVersion = (defaultText = "0.37.0~2017-09-09"),
     # Human-readable presentation of the app version.
 
     minUpgradableAppVersion = 0,
@@ -63,9 +63,8 @@ const pkgdef :Spk.PackageDefinition = (
       categories = [productivity, office],
 
       author = (
-        upstreamAuthor = "Maxime Quandalle",
-        contactEmail = "david@sandstorm.io",
-        pgpSignature = embed "meta/dwrensha-pgp-sig",
+        contactEmail = "x@xet7.org",
+        pgpSignature = embed "meta/wekanteam-pgp-sig",
       ),
 
       pgpKeyring = embed "meta/keyring",
@@ -76,11 +75,15 @@ const pkgdef :Spk.PackageDefinition = (
 
       screenshots = [
         (
-          width = 512,
-          height = 330,
-          jpeg = embed "meta/screenshots/board-view.jpg"
+          width = 1920,
+          height = 1133,
+          png = embed "meta/screenshots/board_view_01.png"
         ),
-        # XXX The screenshots should have a standard width and height.
+        (
+          width = 1920,
+          height = 1133,
+          png = embed "meta/screenshots/board_view_02.png"
+        ),
       ],
 
       changeLog = (

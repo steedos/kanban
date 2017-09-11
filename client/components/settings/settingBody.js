@@ -1,5 +1,6 @@
 Meteor.subscribe('setting');
 Meteor.subscribe('mailServer');
+Meteor.subscribe('accountSettings');
 
 BlazeComponent.extendComponent({
   onCreated() {
@@ -7,6 +8,7 @@ BlazeComponent.extendComponent({
     this.loading = new ReactiveVar(false);
     this.generalSetting = new ReactiveVar(true);
     this.emailSetting = new ReactiveVar(false);
+    this.accountSetting = new ReactiveVar(false);
   },
 
   setError(error) {
@@ -51,7 +53,9 @@ BlazeComponent.extendComponent({
       $('.invite-people').slideDown();
     }
   },
-
+  toggleTLS(){
+    $('#mail-server-tls').toggleClass('is-checked');
+  },
   switchMenu(event){
     const target = $(event.target);
     if(!target.hasClass('active')){
@@ -60,6 +64,7 @@ BlazeComponent.extendComponent({
       const targetID = target.data('id');
       this.generalSetting.set('registration-setting' === targetID);
       this.emailSetting.set('email-setting' === targetID);
+      this.accountSetting.set('account-setting' === targetID);
     }
   },
 
@@ -106,8 +111,9 @@ BlazeComponent.extendComponent({
       const username = $('#mail-server-username').val().trim();
       const password = $('#mail-server-password').val().trim();
       const from = this.checkField('#mail-server-from');
+      const tls = $('#mail-server-tls.is-checked').length > 0;
       Settings.update(Settings.findOne()._id, {$set:{'mailServer.host':host, 'mailServer.port': port, 'mailServer.username': username,
-          'mailServer.password': password, 'mailServer.from': from}});
+          'mailServer.password': password, 'mailServer.enableTLS': tls, 'mailServer.from': from}});
     } catch (e) {
       return;
     } finally {
@@ -119,6 +125,7 @@ BlazeComponent.extendComponent({
   events(){
     return [{
       'click a.js-toggle-registration': this.toggleRegistration,
+      'click a.js-toggle-tls': this.toggleTLS,
       'click a.js-setting-menu': this.switchMenu,
       'click a.js-toggle-board-choose': this.checkBoard,
       'click button.js-email-invite': this.inviteThroughEmail,
@@ -126,3 +133,22 @@ BlazeComponent.extendComponent({
     }];
   },
 }).register('setting');
+
+BlazeComponent.extendComponent({
+  saveAllowEmailChange() {
+    const allowEmailChange = ($('input[name=allowEmailChange]:checked').val() === 'true');
+    AccountSettings.update('accounts-allowEmailChange', {
+      $set: { 'booleanValue': allowEmailChange },
+    });
+  },
+
+  allowEmailChange() {
+    return AccountSettings.findOne('accounts-allowEmailChange').booleanValue;
+  },
+
+  events() {
+    return [{
+      'click button.js-accounts-save': this.saveAllowEmailChange,
+    }];
+  },
+}).register('accountSettings');
