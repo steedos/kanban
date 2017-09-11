@@ -1,4 +1,4 @@
-AccountSettings = new Mongo.Collection('accountSettings');
+AccountSettings = new Mongo.Collection('wekan_accountSettings');
 
 AccountSettings.attachSchema(new SimpleSchema({
   _id: {

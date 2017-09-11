@@ -1,4 +1,4 @@
-Integrations = new Mongo.Collection('integrations');
+Integrations = new Mongo.Collection('wekan_integrations');
 
 Integrations.attachSchema(new SimpleSchema({
   enabled: {
