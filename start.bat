@@ -1,3 +1,6 @@
+git checkout steedos
+call meteor npm install
+
 set DB_SERVER=192.168.0.21
 set MONGO_URL=mongodb://%DB_SERVER%/steedos
 set MONGO_OPLOG_URL=mongodb://%DB_SERVER%/local
