@@ -215,8 +215,12 @@ Users.helpers({
   },
 
   getLanguage() {
-    const profile = this.profile || {};
-    return profile.language || 'en';
+    var locale = this.locale || "";
+    if(locale == "zh-cn")
+      locale = "zh-CN";
+    else
+      locale = 'en';
+    return locale;
   },
 });
 
