@@ -1,5 +1,5 @@
 #!/bin/bash
-meteor npm install
+meteor npm i --registry https://registry.npm.taobao.org -d
 meteor build --server https://cn.steedos.com/board --directory /srv/wekan --allow-superuser
 cd /srv/wekan/bundle/programs/server
 rm -rf node_modules
